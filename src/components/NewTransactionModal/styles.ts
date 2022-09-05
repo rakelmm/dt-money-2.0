@@ -62,12 +62,40 @@ export const Content = styled(Dialog.Content)`
 `;
 
 export const CloseButton = styled(Dialog.Close)`
-    position: absolute;
+    position: absolute; //vai ser relativo ao conteudo e não precisa ser fixo
     background: transparent;
     border: 0;
     top: 1.5rem;
     right: 1.5rem;
     line-height: 0; //ajusta o tamanho do botão X de fechar, pois sem ele a parte de baixo fica maior 
     cursor: pointer;
-    color: ${props => props.theme["gray-500"]}
+    color: ${props => props.theme["gray-500"]};
+`;
+
+export const TrasactionType = styled.div`
+    display: grid; // um item do lado do outro
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 0.5rem;// pra distanciar um pouco mais do input
+`;
+
+interface TrasactionTypeButtonProps {
+    variant: 'income' | 'outcome';
+}
+
+export const TrasactionTypeButton = styled.button<TrasactionTypeButtonProps>`
+    background: ${props => props.theme["gray-700"]};
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    border: 0;
+    color: ${props => props.theme["gray-300"]};
+
+    svg {
+        color: ${props => props.variant === 'income' ? props.theme["green-300"] : props.theme["red-300"]};
+    }
 `;
